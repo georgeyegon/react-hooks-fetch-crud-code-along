@@ -1,14 +1,15 @@
+// src/components/Item.js
 import React from "react";
 
-function Item({ item }) {
+function Item({ item, onDelete, onToggleCartStatus }) {
   return (
-    <li className={item.isInCart ? "in-cart" : ""}>
+    <li>
       <span>{item.name}</span>
       <span className="category">{item.category}</span>
-      <button className={item.isInCart ? "remove" : "add"}>
-        {item.isInCart ? "Remove From" : "Add to"} Cart
+      <button className="add" onClick={() => onToggleCartStatus(item.id)}>
+        {item.isInCart ? "Remove From Cart" : "Add to Cart"}
       </button>
-      <button className="remove">Delete</button>
+      <button className="remove" onClick={() => onDelete(item.id)}>Delete</button>
     </li>
   );
 }
